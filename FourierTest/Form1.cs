@@ -1,33 +1,26 @@
-﻿using System;
+﻿using MathNet.Numerics.IntegralTransforms;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-
-using System.Numerics;
-using MathNet.Numerics.IntegralTransforms;
-
 using static Library.Processor;
 
 namespace FourierTest
 {
 	public partial class Form1 : Form
 	{
-		List<Complex> history = new List<Complex>();
-		Graphics gra;
-		Pen p = new Pen(Brushes.Red);
-		bool drag = false;
-		Complex[] fourie;
-		Complex[] target_fourier;
+		private List<Complex> history = new List<Complex>();
+		private Graphics gra;
+		private Pen p = new Pen(Brushes.Red);
+		private bool drag = false;
+		private Complex[] fourie;
+		private Complex[] target_fourier;
 		public Form1()
 		{
 			InitializeComponent();
-			
+
 			var chartArea = chart1.ChartAreas["ChartArea1"];
 			chartArea.AxisX.Minimum = 1;
 			chartArea.AxisX.Maximum = 15;
@@ -76,7 +69,7 @@ namespace FourierTest
 			}
 		}
 
-		
+
 
 		private void button2_Click(object sender, EventArgs e)
 		{
@@ -84,8 +77,8 @@ namespace FourierTest
 			Fourier.Forward(normalized, FourierOptions.Default);
 			ShowChart(normalized);
 			fourie = normalized;
-			
-			if(target_fourier != null)
+
+			if (target_fourier != null)
 			{
 				var error = Calc_error(target_fourier, fourie);
 				label1.Text = error.ToString();
@@ -99,7 +92,7 @@ namespace FourierTest
 			Console.Write("private Complex[] shape1 = new Complex[]{");
 			foreach (var item in target_fourier)
 			{
-				Console.Write("new Complex("+item.Real+"," + item.Imaginary + "),");
+				Console.Write("new Complex(" + item.Real + "," + item.Imaginary + "),");
 			}
 			Console.WriteLine("};");
 		}
