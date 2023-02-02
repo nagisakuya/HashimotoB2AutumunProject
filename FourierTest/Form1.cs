@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Numerics;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Serialization;
 using static Library.Processor;
 
 namespace FourierTest
@@ -89,12 +92,16 @@ namespace FourierTest
 		private void button3_Click(object sender, EventArgs e)
 		{
 			target_fourier = fourie;
-			Console.Write("private Complex[] shape1 = new Complex[]{");
-			foreach (var item in target_fourier)
-			{
-				Console.Write("new Complex(" + item.Real + "," + item.Imaginary + "),");
-			}
-			Console.WriteLine("};");
+			BinaryFormatter bf = new BinaryFormatter();
+			var file = File.Create("./shape.shape");
+			bf.Serialize(file, fourie);
+			file.Close();
+			//Console.Write("private Complex[] shape1 = new Complex[]{");
+			//foreach (var item in target_fourier)
+			//{
+			//	Console.Write("new Complex(" + item.Real + "," + item.Imaginary + "),");
+			//}
+			//Console.WriteLine("};");
 		}
 
 		private void button1_Click(object sender, EventArgs e)

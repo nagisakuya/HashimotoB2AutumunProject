@@ -79,6 +79,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\shapes\a.shape">
+      <Link>shapes\a.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shapes\clover.shape">
+      <Link>shapes\clover.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shapes\infinit.shape">
+      <Link>shapes\infinit.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shapes\phay.shape">
+      <Link>shapes\phay.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shapes\twist.shape">
+      <Link>shapes\twist.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shapes\z.shape">
+      <Link>shapes\z.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

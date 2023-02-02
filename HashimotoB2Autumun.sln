@@ -3,19 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashimotoB2Autumun", "HashimotoB2Autumun\HashimotoB2Autumun.csproj", "{268F65C6-FCD2-46B5-9906-9FD847A49016}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourierTest", "FourierTest\FourierTest.csproj", "{062553E5-A8C3-459C-B32F-F9234F3ABE45}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EB33CB2C-9483-485A-A2E5-8B00A20F8A85} = {EB33CB2C-9483-485A-A2E5-8B00A20F8A85}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "Program\Program.csproj", "{6E010301-BC5C-49D5-8A82-C8800BE96336}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EB33CB2C-9483-485A-A2E5-8B00A20F8A85} = {EB33CB2C-9483-485A-A2E5-8B00A20F8A85}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{20D37343-3BD4-43BF-93E5-EBC2CAD30966}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EB33CB2C-9483-485A-A2E5-8B00A20F8A85} = {EB33CB2C-9483-485A-A2E5-8B00A20F8A85}
 	EndProjectSection
@@ -24,28 +12,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{82AC94CB-C45F-49AD-AE3F-E382EDB83E7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebcamTest", "WebcamTest\WebcamTest.csproj", "{268F65C6-FCD2-46B5-9906-9FD847A49016}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shapes", "shapes", "{3F3414F2-035B-4F4B-8529-0486671C89CE}"
+	ProjectSection(SolutionItems) = preProject
+		Shapes\a.shape = Shapes\a.shape
+		Shapes\clover.shape = Shapes\clover.shape
+		Shapes\infinit.shape = Shapes\infinit.shape
+		Shapes\phay.shape = Shapes\phay.shape
+		Shapes\twist.shape = Shapes\twist.shape
+		Shapes\z.shape = Shapes\z.shape
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Release|Any CPU.Build.0 = Release|Any CPU
 		{062553E5-A8C3-459C-B32F-F9234F3ABE45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{062553E5-A8C3-459C-B32F-F9234F3ABE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{062553E5-A8C3-459C-B32F-F9234F3ABE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{062553E5-A8C3-459C-B32F-F9234F3ABE45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E010301-BC5C-49D5-8A82-C8800BE96336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E010301-BC5C-49D5-8A82-C8800BE96336}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E010301-BC5C-49D5-8A82-C8800BE96336}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E010301-BC5C-49D5-8A82-C8800BE96336}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20D37343-3BD4-43BF-93E5-EBC2CAD30966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20D37343-3BD4-43BF-93E5-EBC2CAD30966}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20D37343-3BD4-43BF-93E5-EBC2CAD30966}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20D37343-3BD4-43BF-93E5-EBC2CAD30966}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB33CB2C-9483-485A-A2E5-8B00A20F8A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB33CB2C-9483-485A-A2E5-8B00A20F8A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB33CB2C-9483-485A-A2E5-8B00A20F8A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,6 +42,10 @@ Global
 		{82AC94CB-C45F-49AD-AE3F-E382EDB83E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82AC94CB-C45F-49AD-AE3F-E382EDB83E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82AC94CB-C45F-49AD-AE3F-E382EDB83E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268F65C6-FCD2-46B5-9906-9FD847A49016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,10 +34,17 @@ namespace HashimotoB2Autumun
 		private void button1_Click(object sender, EventArgs e)
 		{
 			var capture = new VideoCapture();
-			capture.Open(0);
+			for (int i = 1; i >= 0; i--)
+			{
+				if (capture.Open(i))
+				{
+					Console.WriteLine($"CaptureStart! Port={i}");
+					break;
+				}
+			}
 			if (!capture.IsOpened())
 			{
-				throw new Exception("capture initialization failed");
+				return;
 			}
 
 			var port = TryStartSerial();
@@ -45,66 +52,58 @@ namespace HashimotoB2Autumun
 
 			while (true)
 			{
-				try
+				var flame = new Mat();
+				capture.Read(flame);
+				if (flame.Empty())
 				{
-					var flame = new Mat();
-					capture.Read(flame);
-					if (flame.Empty())
-					{
-						Task.Delay(1);
-						continue;
-					}
-
-					if (flame.Size().Width > 0)
-					{
-
-
-						processor.ProcessAll(flame, func, func2);
-
-						void func(string str)
-						{
-							label1.Text += str + "\n";
-							if (port != null)
-							{
-								if (str == "reset")
-								{
-									port.Write("c");
-								}
-
-								if (str == "door")
-								{
-									port.Write("o");
-								}
-							}
-							else
-							{
-								port = TryStartSerial();
-							}
-						}
-
-						void func2(Mat image)
-						{
-							//これどのタイミングでキャプチャーされてるの？？？？
-							pictureBox1.Image = BitmapConverter.ToBitmap(flame);
-							pictureBox1.Refresh();
-							pictureBox2.Image = BitmapConverter.ToBitmap(image);
-							pictureBox2.Refresh();
-						}
-
-					}
-
-					Cv2.WaitKey();
-
-					if (this.IsDisposed)
-					{
-						break;
-					}
+					Task.Delay(1);
+					break;
 				}
 
-				catch (Exception)
+				if (flame.Size().Width > 0)
+				{
+
+					pictureBox1.Image = BitmapConverter.ToBitmap(flame);
+					pictureBox1.Refresh();
+
+					processor.ProcessAll(flame, func, func2);
+
+					void func(string str)
+					{
+						label1.Text += str + "\n";
+						if (port != null)
+						{
+							if (str == "reset")
+							{
+								port.Write("c");
+							}
+
+							if (str == "door")
+							{
+								port.Write("o");
+							}
+						}
+						else
+						{
+							port = TryStartSerial();
+						}
+					}
+
+					void func2(Mat image)
+					{
+						pictureBox2.Image = BitmapConverter.ToBitmap(image);
+						pictureBox2.Refresh();
+					}
+
+				}
+
+				Cv2.WaitKey();
+
+				if (this.IsDisposed)
 				{
 					break;
 				}
+
 			}
 		}
 		private void button2_Click(object sender, EventArgs e)
