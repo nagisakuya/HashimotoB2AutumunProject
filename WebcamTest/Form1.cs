@@ -11,6 +11,7 @@ namespace HashimotoB2Autumun
 {
 	public partial class Form1 : Form
 	{
+		bool stop = false;
 		public Form1()
 		{
 			InitializeComponent();
@@ -34,14 +35,7 @@ namespace HashimotoB2Autumun
 		private void button1_Click(object sender, EventArgs e)
 		{
 			var capture = new VideoCapture();
-			for (int i = 1; i >= 0; i--)
-			{
-				if (capture.Open(i))
-				{
-					Console.WriteLine($"CaptureStart! Port={i}");
-					break;
-				}
-			}
+			capture.Open(((int)numericUpDown1.Value));
 			if (!capture.IsOpened())
 			{
 				return;
@@ -99,8 +93,13 @@ namespace HashimotoB2Autumun
 
 				Cv2.WaitKey();
 
-				if (this.IsDisposed)
+				if (this.IsDisposed || this.stop)
 				{
+					this.stop = false;
+					pictureBox1.Image = null;
+					pictureBox1.Refresh();
+					pictureBox2.Image = null;
+					pictureBox2.Refresh();
 					break;
 				}
 
@@ -109,6 +108,11 @@ namespace HashimotoB2Autumun
 		private void button2_Click(object sender, EventArgs e)
 		{
 			label1.Text = "";
+		}
+
+		private void button2_Click_1(object sender, EventArgs e)
+		{
+			this.stop = true;
 		}
 	}
 }

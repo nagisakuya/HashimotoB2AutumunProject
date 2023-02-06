@@ -29,18 +29,20 @@ namespace HashimotoB2Autumun
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.label1 = new System.Windows.Forms.Label();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.button2 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pictureBox1
@@ -71,16 +73,16 @@ namespace HashimotoB2Autumun
 			// 
 			// chart1
 			// 
-			chartArea4.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea4);
-			legend4.Name = "Legend1";
-			this.chart1.Legends.Add(legend4);
+			chartArea2.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea2);
+			legend2.Name = "Legend1";
+			this.chart1.Legends.Add(legend2);
 			this.chart1.Location = new System.Drawing.Point(22, 361);
 			this.chart1.Name = "chart1";
-			series4.ChartArea = "ChartArea1";
-			series4.Legend = "Legend1";
-			series4.Name = "Series1";
-			this.chart1.Series.Add(series4);
+			series2.ChartArea = "ChartArea1";
+			series2.Legend = "Legend1";
+			series2.Name = "Series1";
+			this.chart1.Series.Add(series2);
 			this.chart1.Size = new System.Drawing.Size(854, 286);
 			this.chart1.TabIndex = 5;
 			this.chart1.Text = "chart1";
@@ -93,15 +95,22 @@ namespace HashimotoB2Autumun
 			this.label1.Size = new System.Drawing.Size(0, 18);
 			this.label1.TabIndex = 6;
 			// 
+			// numericUpDown1
+			// 
+			this.numericUpDown1.Location = new System.Drawing.Point(159, 24);
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(120, 25);
+			this.numericUpDown1.TabIndex = 7;
+			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(895, 15);
+			this.button2.Location = new System.Drawing.Point(299, 13);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(97, 42);
-			this.button2.TabIndex = 7;
-			this.button2.Text = "reset";
+			this.button2.Size = new System.Drawing.Size(136, 44);
+			this.button2.TabIndex = 8;
+			this.button2.Text = "CaptureStop";
 			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.Click += new System.EventHandler(this.button2_Click_1);
 			// 
 			// Form1
 			// 
@@ -109,6 +118,7 @@ namespace HashimotoB2Autumun
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1123, 769);
 			this.Controls.Add(this.button2);
+			this.Controls.Add(this.numericUpDown1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.chart1);
 			this.Controls.Add(this.pictureBox2);
@@ -120,6 +130,7 @@ namespace HashimotoB2Autumun
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -132,6 +143,7 @@ namespace HashimotoB2Autumun
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Button button2;
 	}
 }
