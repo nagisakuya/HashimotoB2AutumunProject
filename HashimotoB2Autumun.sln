@@ -17,6 +17,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shapes", "shapes", "{3F3414F2-035B-4F4B-8529-0486671C89CE}"
 	ProjectSection(SolutionItems) = preProject
 		Shapes\a.shape = Shapes\a.shape
+		Shapes\alpha.shape = Shapes\alpha.shape
 		Shapes\clover.shape = Shapes\clover.shape
 		Shapes\infinit.shape = Shapes\infinit.shape
 		Shapes\phay.shape = Shapes\phay.shape

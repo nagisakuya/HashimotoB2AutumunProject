@@ -1,8 +1,10 @@
 ﻿using Library;
+using MathNet.Numerics;
 //以下、OpenCvsharpの使用とMatの変換用として追加
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Library.Processor;
@@ -62,24 +64,32 @@ namespace HashimotoB2Autumun
 
 					processor.ProcessAll(flame, func, func2);
 
-					void func(string str)
+					void func(Dictionary<string, double> list)
 					{
-						label1.Text += str + "\n";
-						if (port != null)
+						if (list["clover"] < 0.21)
 						{
-							if (str == "reset")
-							{
-								port.Write("c");
-							}
-
-							if (str == "door")
-							{
-								port.Write("o");
-							}
+							label1.Text += "clover\n";
 						}
-						else
+						else if (list["alpha"]<0.21){
+							label1.Text += "a\n";
+						}
+						label1.Text += "clover="+ list["clover"].Round(3) + ",a=" + list["alpha"].Round(3) + "\n";
+						if (port == null)
 						{
 							port = TryStartSerial();
+						}
+
+						if (list["clover"] < 0.21)
+						{
+							Console.WriteLine("C!");
+							if (port != null)
+								port.Write("c");
+						}
+						else if (list["alpha"] < 0.21)
+						{
+							Console.WriteLine("A!");
+							if (port != null)
+								port.Write("o");
 						}
 					}
 

@@ -13,7 +13,7 @@ namespace Library
 {
 	public class Processor
 	{
-		private class Shape
+		public class Shape
 		{
 			public string name { get; private set; }
 			public Complex[] shape { get; private set; }
@@ -126,21 +126,26 @@ namespace Library
 		public int FPS { set; get; } = 60;
 		private double err_minimum = double.MaxValue;
 		private Shape target_shape = null;
+		private Dictionary<string,double> shapes_minimam_error = new Dictionary<string, double>();
+		Point center = new Point();
 
-		public void ProcessAll(Mat _flame, Action<string> func = null, Action<Mat> func2 = null)
+		public void ProcessAll(Mat _flame, Action<Dictionary<string, double>> func = null, Action<Mat> func2 = null)
 		{
 			var image = _flame.CvtColor(ColorConversionCodes.BGR2GRAY);
 
-			var binalized_image = image.Threshold(150, 255, ThresholdTypes.Binary);
+			var binalized_image = image.Threshold(70, 255, ThresholdTypes.Binary);
 
 			var moments = binalized_image.Moments();
-			if (moments.M00 == 0) return;
-			var center = new Point(moments.M10 / moments.M00, moments.M01 / moments.M00);
+			if (moments.M00 != 0)
+			{
+				center = new Point(moments.M10 / moments.M00, moments.M01 / moments.M00);
+			}
 			history.Add(new Complex(_flame.Width - center.X, center.Y));
 
 			binalized_image = binalized_image.CvtColor(ColorConversionCodes.GRAY2RGB);
-			binalized_image.DrawMarker(center, new Scalar(0, 0, 255));
+			binalized_image.DrawMarker(center, new Scalar(0, 0, 255),markerSize:100);
 
+			if(func2 != null)
 			func2(binalized_image);
 
 			if (framecount++ % 3 == 0 && history.Count > FPS)
@@ -154,6 +159,10 @@ namespace Library
 					foreach (var shape in shapes)
 					{
 						var error = Calc_error(sample, shape.shape);
+						if(!shapes_minimam_error.ContainsKey(shape.name) || shapes_minimam_error[shape.name] > error)
+						{
+							shapes_minimam_error[shape.name] = error;
+						}
 						if (error < err_minimum)
 						{
 							err_minimum = error;
@@ -164,16 +173,27 @@ namespace Library
 				else
 				{
 					var total_moved_length = Moved_length(history.ToArray());
-					if (total_moved_length > 300 && err_minimum < 0.3)
+					if (total_moved_length > 300 && err_minimum < 0.35)
 					{
-						if (target_shape != null && func != null) func(target_shape.name);
+						if (target_shape != null && func != null) func(shapes_minimam_error);
 
-						target_shape = null;
-						err_minimum = double.MaxValue;
 					}
+
+					target_shape = null;
+					err_minimum = double.MaxValue;
+					shapes_minimam_error.Clear();
 					history.Clear();
 				}
 			}
 		}
+		//public List<(double, string)> check_shapes(Complex[] sample){
+		//	var list = new List<(double, string)>();
+		//	foreach (var shape in shapes)
+		//	{
+		//		var error = Calc_error(sample, shape.shape);
+		//		list.Add((error,shape.name));
+		//	}
+		//	return list;
+		//}
 	}
 }

@@ -117,6 +117,10 @@
       <Link>shapes\a.shape</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\Shapes\alpha.shape">
+      <Link>shapes\alpha.shape</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\shapes\clover.shape">
       <Link>shapes\clover.shape</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

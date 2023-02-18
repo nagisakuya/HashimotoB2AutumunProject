@@ -2,6 +2,8 @@
 //以下、OpenCvsharpの使用とMatの変換用として追加
 using OpenCvSharp;
 using System;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 using static Library.Processor;
 
@@ -36,24 +38,25 @@ namespace Program
 
 					processor.ProcessAll(flame, func);
 
-					void func(string str)
+					void func(Dictionary<string, double> list)
 					{
-						if (port != null)
-						{
-							if (str == "reset")
-							{
-								port.Write("c");
-							}
-
-							if (str == "door")
-							{
-								port.Write("o");
-							}
-						}
-						else
+						if(port == null)
 						{
 							port = TryStartSerial();
 						}
+						
+							if (list["clover"] < 0.21)
+							{
+								Console.WriteLine("C!");
+								if (port != null)
+									port.Write("c");
+							}
+							else if (list["alpha"] < 0.21)
+							{
+								Console.WriteLine("A!");
+								if (port != null)
+									port.Write("o");
+							}
 					}
 
 				}
